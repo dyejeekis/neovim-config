@@ -6,6 +6,8 @@ vim.cmd([[
 	"" Base Settings
 	"" ========================================================
 
+	set tabstop=4
+	set shiftwidth=4
 	set scrolloff=5
 	set relativenumber
 	set number
@@ -22,8 +24,18 @@ vim.cmd([[
 	" Use system clipboard
 	set clipboard+=unnamed   
 
+	" Use powershell as terminal
+	let &shell = executable('pwsh') ? 'pwsh' : 'powershell'
+	let &shellcmdflag = '-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();$PSDefaultParameterValues[''Out-File:Encoding'']=''utf8'';'
+	let &shellredir = '2>&1 | %%{ "$_" } | Out-File %s; exit $LastExitCode'
+	let &shellpipe  = '2>&1 | %%{ "$_" } | Tee-Object %s; exit $LastExitCode'
+	set shellquote= shellxquote=
+
 	"" Key mappings
 	"" ========================================================
+
+	" Exit terminal-mode
+    tnoremap <Esc> <C-\><C-n>
 
 	" Redo
 	nnoremap U <C-r>
@@ -45,10 +57,10 @@ vim.cmd([[
 	inoremap <C-j> <down>
 
 	" Delete character backwards in insert mode
-	inoremap <C-b> <C-h>
+	inoremap <C-n> <C-h>
 
 	" Delete character forwards in insert mode
-	inoremap <C-n> <Del>
+	inoremap <C-b> <Del>
 
 	" Move up and down by x lines
 	nnoremap J 5j
@@ -72,27 +84,6 @@ vim.cmd([[
 	vnoremap <C-d> <C-f>
 	vnoremap <C-f> <C-b>
 
-	" Close active editor
-	nmap <C-w> :tabclose<CR>
-
-	" Tab navigation
-	nnoremap <C-n> :tabnext<CR>
-	nnoremap <C-b> :tabprev<CR>
-	vnoremap <C-n> :tabnext<CR>
-	vnoremap <C-b> :tabprev<CR>
-
-	" Move between splits
-	nnoremap <C-u> <Nop>
-	nnoremap <C-u>h <C-w>h
-	nnoremap <C-u>l <C-w>l
-	nnoremap <C-u>k <C-w>k
-	nnoremap <C-u>j <C-w>j
-	vnoremap <C-u> <Nop>
-	vnoremap <C-u>h <C-w>h
-	vnoremap <C-u>l <C-w>l
-	vnoremap <C-u>k <C-w>k
-	vnoremap <C-u>j <C-w>j
-
 	" Easy visual indentation
 	vnoremap < <gv
 	vnoremap > >gv
@@ -100,30 +91,62 @@ vim.cmd([[
 	" Execute macro saved in 'q' register
 	nnoremap qj @q
 
+	" Tab navigation
+	nnoremap <C-n> :tabnext<CR>
+	nnoremap <C-b> :tabprev<CR>
+	vnoremap <C-n> :tabnext<CR>
+	vnoremap <C-b> :tabprev<CR>
+
 	"" Leader commands
 	"" ========================================================
 
 	" New line
-	nnoremap <leader>o o<Esc>
-	nnoremap <leader>O O<Esc>
+	map <leader>o o<Esc>
+	map <leader>O O<Esc>
 
 	" Join lines
-	nnoremap <leader>j J
+	map <leader>j J
 
 	" Split lines
-	nnoremap <leader>k i<Enter><Esc>k$
+	map <leader>k i<Enter><Esc>k$
 
 	" Remove highlight
 	map <leader>/ :noh<CR>
 
 	" Open register
 	map <leader>' :reg<CR>
+
+	" Buffer navigation
+	map <leader>; :ls<CR>
+	map <leader>bn :bn<CR>
+	map <leader>bp :bp<CR>
+	map <leader>bd :bd<CR>
+	map <leader>bw :bw!<CR>
 ]])
 
+-- [[ Neovim settings ]]
 vim.cmd([[
 	" Highlight yanked text
 	au TextYankPost * silent! lua vim.highlight.on_yank()
 ]])
 
+-- [[ Reload config script]]
 require 'user.reload'
 vim.keymap.set('n', '<leader>rc', ':lua ReloadConfig()<CR>', { noremap = true, silent = false })
+
+-- [[ Install `lazy.nvim` plugin manager ]]
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+-- [[ Configure plugins ]]
+require('lazy').setup('plugins')
