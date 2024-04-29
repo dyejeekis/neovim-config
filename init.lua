@@ -1,5 +1,6 @@
-vim.cmd("colorscheme habamax")
+vim.cmd("colorscheme default")
 
+-- Vim settings
 vim.cmd([[
 	let mapleader = " "
 
@@ -11,7 +12,7 @@ vim.cmd([[
 	set scrolloff=5
 	set relativenumber
 	set number
-	set showmode
+	set noshowmode
 	set showcmd
 
 	set ignorecase
@@ -23,13 +24,6 @@ vim.cmd([[
 
 	" Use system clipboard
 	set clipboard+=unnamed   
-
-	" Use powershell as terminal
-	let &shell = executable('pwsh') ? 'pwsh' : 'powershell'
-	let &shellcmdflag = '-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();$PSDefaultParameterValues[''Out-File:Encoding'']=''utf8'';'
-	let &shellredir = '2>&1 | %%{ "$_" } | Out-File %s; exit $LastExitCode'
-	let &shellpipe  = '2>&1 | %%{ "$_" } | Tee-Object %s; exit $LastExitCode'
-	set shellquote= shellxquote=
 
 	"" Key mappings
 	"" ========================================================
@@ -122,19 +116,33 @@ vim.cmd([[
 	map <leader>bp :bp<CR>
 	map <leader>bd :bd<CR>
 	map <leader>bw :bw!<CR>
+
+	" Focus windows
+	map <leader>fe :Vexplore!<CR>
 ]])
 
--- [[ Neovim settings ]]
+-- Use powershell as terminal
+if vim.fn.has 'win32' == 1 then
+	vim.cmd([[
+		let &shell = executable('pwsh') ? 'pwsh' : 'powershell'
+		let &shellcmdflag = '-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();$PSDefaultParameterValues[''Out-File:Encoding'']=''utf8'';'
+		let &shellredir = '2>&1 | %%{ "$_" } | Out-File %s; exit $LastExitCode'
+		let &shellpipe  = '2>&1 | %%{ "$_" } | Tee-Object %s; exit $LastExitCode'
+		set shellquote= shellxquote=
+	]])
+end
+
+-- Neovim settings
 vim.cmd([[
 	" Highlight yanked text
 	au TextYankPost * silent! lua vim.highlight.on_yank()
 ]])
 
--- [[ Reload config script]]
+-- Reload config script
 require 'user.reload'
 vim.keymap.set('n', '<leader>rc', ':lua ReloadConfig()<CR>', { noremap = true, silent = false })
 
--- [[ Install `lazy.nvim` plugin manager ]]
+-- Install `lazy.nvim` plugin manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   vim.fn.system({
@@ -148,5 +156,5 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- [[ Configure plugins ]]
+-- Configure plugins
 require('lazy').setup('plugins')
