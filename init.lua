@@ -110,15 +110,21 @@ vim.cmd([[
 	" Open register
 	map <leader>' :reg<CR>
 
-	" Buffer navigation
+	" Tabs
+	map <leader>tn :tabe<CR>
+	map <leader>tN :$tabe<CR>
+
+	" Buffers
 	map <leader>; :ls<CR>
 	map <leader>bn :bn<CR>
 	map <leader>bp :bp<CR>
 	map <leader>bd :bd<CR>
 	map <leader>bw :bw!<CR>
 
-	" Focus windows
-	map <leader>fe :Vexplore!<CR>
+	" Focus various windows
+	map <leader>fe :Explore<CR>
+	map <leader>fE :Vexplore!<CR>
+	map <leader>ft :terminal<CR>
 ]])
 
 -- Use powershell as terminal
