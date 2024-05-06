@@ -83,23 +83,20 @@ vim.cmd([[
 	" Execute macro saved in 'q' register
 	nnoremap qj @q
 
-	"" Leader commands
-	"" ========================================================
-
 	" New line
-	map <leader>o o<Esc>
-	map <leader>O O<Esc>
+	nnoremap <leader>o o<Esc>
+	nnoremap <leader>O O<Esc>
 
 	" Join lines
-	map <leader>j J
+	nnoremap <leader>j J
 
 	" Split lines
-	map <leader>k i<Enter><Esc>k$
+	nnoremap <leader>k i<Enter><Esc>k$
 
-	" Remove highlight
+	" Remove highlights
 	map <leader>/ :noh<CR>
 
-	" Open register
+	" Show registers
 	map <leader>' :reg<CR>
 
 	" Tabs
@@ -112,6 +109,8 @@ vim.cmd([[
 	map <leader>to :tabo<CR>
 
 	" Buffers
+	nnoremap <C-n> :bn<CR>
+	nnoremap <C-p> :bp<CR>
 	map <leader>; :ls<CR>
 	map <leader>bn :bn<CR>
 	map <leader>bp :bp<CR>
