@@ -1,5 +1,3 @@
-vim.cmd("colorscheme default")
-
 -- Vim settings
 vim.cmd([[
 	let mapleader = " "
@@ -85,12 +83,6 @@ vim.cmd([[
 	" Execute macro saved in 'q' register
 	nnoremap qj @q
 
-	" Tab navigation
-	nnoremap <C-n> :tabnext<CR>
-	nnoremap <C-b> :tabprev<CR>
-	vnoremap <C-n> :tabnext<CR>
-	vnoremap <C-b> :tabprev<CR>
-
 	"" Leader commands
 	"" ========================================================
 
@@ -119,7 +111,7 @@ vim.cmd([[
 	map <leader>bn :bn<CR>
 	map <leader>bp :bp<CR>
 	map <leader>bd :bd<CR>
-	map <leader>bw :bw!<CR>
+	map <leader>bw :bw<CR>
 
 	" Focus various windows
 	map <leader>fe :Explore<CR>
