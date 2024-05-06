@@ -25,9 +25,10 @@ return {
 
 	{ 'numToStr/Comment.nvim', opts = {} },
 
-	{
+	{ -- Git command utilities
 		'tpope/vim-fugitive',
 		config = function ()
+			-- Git command keymaps
 			vim.keymap.set('n', '<leader>fd', '<cmd>Git difftool<CR><C-w>w', { desc = '[F]ocus [D]ifftool'})
 			vim.keymap.set('n', '<leader>fm', '<cmd>Git mergetool<CR><C-w>w', { desc = '[F]ocus [M]ergetool'})
 		end
