@@ -103,15 +103,20 @@ vim.cmd([[
 	map <leader>' :reg<CR>
 
 	" Tabs
-	map <leader>tn :tabe<CR>
-	map <leader>tN :$tabe<CR>
+	map <leader>tt :tabs<CR>
+	map <leader>te :tabe<CR>
+	map <leader>tE :$tabe<CR>
+	map <leader>tn :tabn<CR>
+	map <leader>tp :tabp<CR>
+	map <leader>tc :tabc<CR>
+	map <leader>to :tabo<CR>
 
 	" Buffers
 	map <leader>; :ls<CR>
 	map <leader>bn :bn<CR>
 	map <leader>bp :bp<CR>
 	map <leader>bd :bd<CR>
-	map <leader>bw :bw<CR>
+	map <leader>bw :bw!<CR>
 
 	" Focus various windows
 	map <leader>fe :Explore<CR>

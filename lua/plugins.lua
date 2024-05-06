@@ -3,23 +3,27 @@ return {
 	-- 'pocco81/auto-save.nvim',
 	'tpope/vim-rhubarb',
 
-	{ -- Theme
-		'EdenEast/nightfox.nvim',
-		priority = 1000, -- Make sure to load this before all the other start plugins.
-		config = function()
+	{ -- Enable transparent background for all themes
+		'xiyaowong/transparent.nvim',
+		dependencies = {
+			-- Themes
+			'folke/tokyonight.nvim',
+			'EdenEast/nightfox.nvim',
+			'ellisonleao/gruvbox.nvim',
+			'Mofiqul/dracula.nvim',
+			{ "catppuccin/nvim", name = "catppuccin" }
+		},
+		priority = 1000,
+		lazy = false,
+		config = function ()
 			-- Load the colorscheme here.
-			vim.cmd.colorscheme 'carbonfox'
+			vim.cmd.colorscheme 'catppuccin'
 
 			-- You can configure highlights by doing something like:
 			-- vim.cmd.hi 'Comment gui=none'
-		end,
-	},
 
-	{ -- Enable transparent background for all themes
-		'xiyaowong/transparent.nvim',
-		lazy = false,
-		config = function ()
-			vim.g.transparent_enabled = true
+			-- Enable transparent background for all themes
+			vim.g.transparent_enabled = false
 		end
 	},
 
@@ -106,6 +110,7 @@ return {
 			vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
 			vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
 			vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
+			vim.keymap.set('n', '<C-p>', builtin.find_files)
 			vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
 			vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
 			vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
@@ -372,9 +377,39 @@ return {
 		  statusline.section_location = function()
 			return '%2l:%-2v'
 		  end
-
-		  -- ... and there is more!
-		  --  Check out: https://github.com/echasnovski/mini.nvim
 		end,
 	},
+
+	-- { -- Highlight, edit, and navigate code
+	-- 'nvim-treesitter/nvim-treesitter',
+	-- build = ':TSUpdate',
+	-- opts = {
+	-- 	ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc' },
+	-- 	-- Autoinstall languages that are not installed
+	-- 	auto_install = true,
+	-- 	highlight = {
+	-- 		enable = true,
+	-- 		-- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
+	-- 		--  If you are experiencing weird indenting issues, add the language to
+	-- 		--  the list of additional_vim_regex_highlighting and disabled languages for indent.
+	-- 		additional_vim_regex_highlighting = { 'ruby' },
+	-- 	},
+	-- 	indent = { enable = true, disable = { 'ruby' } },
+	-- },
+	-- config = function(_, opts)
+	-- 	-- [[ Configure Treesitter ]] See `:help nvim-treesitter`
+	--
+	-- 	-- Prefer git instead of curl in order to improve connectivity in some environments
+	-- 	require('nvim-treesitter.install').prefer_git = true
+	-- 	---@diagnostic disable-next-line: missing-fields
+	-- 	require('nvim-treesitter.configs').setup(opts)
+	--
+	-- 	-- There are additional nvim-treesitter modules that you can use to interact
+	-- 	-- with nvim-treesitter. You should go explore a few and see what interests you:
+	-- 	--
+	-- 	--    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
+	-- 	--    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
+	-- 	--    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+	-- 	end,
+	-- },
 }
