@@ -117,6 +117,7 @@ vim.cmd([[
 	map <leader>fe :Explore<CR>
 	map <leader>fE :Vexplore!<CR>
 	map <leader>ft :terminal<CR>
+	map <leader>fT <C-w>s<C-w>w:terminal<CR>
 ]])
 
 -- Use powershell as terminal

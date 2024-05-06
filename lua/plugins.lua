@@ -28,7 +28,8 @@ return {
 	{
 		'tpope/vim-fugitive',
 		config = function ()
-			vim.keymap.set('n', '<leader>fd', '<cmd>Git difftool<CR>', { desc = '[F]ocus [D]ifftool'})
+			vim.keymap.set('n', '<leader>fd', '<cmd>Git difftool<CR><C-w>w', { desc = '[F]ocus [D]ifftool'})
+			vim.keymap.set('n', '<leader>fm', '<cmd>Git mergetool<CR><C-w>w', { desc = '[F]ocus [M]ergetool'})
 		end
 	},
 
@@ -44,7 +45,7 @@ return {
 			},
 		},
 		config = function ()
-			-- todo: set more keymaps
+			-- Git diff keymaps, todo: set more keymaps
 			vim.keymap.set('n', '<leader>vv', '<cmd>Gitsigns preview_hunk_inline<CR>', { desc = '[V] Pre[V]iew hunk inline'})
 			vim.keymap.set('n', '<leader>vn', '<cmd>Gitsigns next_hunk<CR>', { desc = '[V] [N]ext hunk'})
 			vim.keymap.set('n', '<leader>vp', '<cmd>Gitsigns prev_hunk<CR>', { desc = '[V] [P]revious hunk'})
@@ -224,33 +225,33 @@ return {
 
 			-- Enable the following language servers
 			local servers = {
-			-- clangd = {},
-			-- gopls = {},
-			-- pyright = {},
-			-- rust_analyzer = {},
-			-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-			--
-			-- Some languages (like typescript) have entire language plugins that can be useful:
-			--    https://github.com/pmizio/typescript-tools.nvim
-			--
-			-- But for many setups, the LSP (`tsserver`) will work just fine
-			-- tsserver = {},
-			--
+				clangd = {},
+				-- gopls = {},
+				-- pyright = {},
+				-- rust_analyzer = {},
+				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
+				--
+				-- Some languages (like typescript) have entire language plugins that can be useful:
+				--    https://github.com/pmizio/typescript-tools.nvim
+				--
+				-- But for many setups, the LSP (`tsserver`) will work just fine
+				-- tsserver = {},
+				--
 
-			-- lua_ls = {
-			-- cmd = {...},
-			-- filetypes = { ...},
-			-- capabilities = {},
-			-- settings = {
-			--   Lua = {
-			--     completion = {
-			--       callSnippet = 'Replace',
-			--     },
-			--     -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-			--     -- diagnostics = { disable = { 'missing-fields' } },
-			--   },
-			-- },
-			-- },
+				lua_ls = {
+				-- cmd = {...},
+				-- filetypes = { ...},
+				-- capabilities = {},
+				-- settings = {
+				--   Lua = {
+				--     completion = {
+				--       callSnippet = 'Replace',
+				--     },
+				--     -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
+				--     -- diagnostics = { disable = { 'missing-fields' } },
+				--   },
+				-- },
+				},
 			}
 
 			-- Ensure the servers and tools above are installed
