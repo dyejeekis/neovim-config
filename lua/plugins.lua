@@ -17,13 +17,13 @@ return {
 		lazy = false,
 		config = function ()
 			-- Load the colorscheme here.
-			vim.cmd.colorscheme 'catppuccin'
+			vim.cmd.colorscheme 'nightfox'
 
 			-- You can configure highlights by doing something like:
 			-- vim.cmd.hi 'Comment gui=none'
 
 			-- Enable transparent background for all themes
-			vim.g.transparent_enabled = false
+			vim.g.transparent_enabled = true
 		end
 	},
 
@@ -33,7 +33,7 @@ return {
 		'tpope/vim-fugitive',
 		config = function ()
 			-- Git command keymaps
-			vim.keymap.set('n', '<leader>fd', '<cmd>Git difftool<CR><C-w>w', { desc = '[F]ocus [D]ifftool'})
+			vim.keymap.set('n', '<leader>fn', '<cmd>Git difftool<CR><C-w>w', { desc = '[F]ocus Cha[N]ges (Difftool)'})
 			vim.keymap.set('n', '<leader>fm', '<cmd>Git mergetool<CR><C-w>w', { desc = '[F]ocus [M]ergetool'})
 		end
 	},
@@ -55,7 +55,8 @@ return {
 			vim.keymap.set('n', '<leader>vn', '<cmd>Gitsigns next_hunk<CR>', { desc = '[V] [N]ext hunk'})
 			vim.keymap.set('n', '<leader>vp', '<cmd>Gitsigns prev_hunk<CR>', { desc = '[V] [P]revious hunk'})
 			vim.keymap.set('n', '<leader>vr', '<cmd>Gitsigns reset_hunk<CR>', { desc = '[V] [R]eset hunk'})
-			vim.keymap.set('n', '<leader>vd', '<cmd>Gitsigns diffthis<CR>', { desc = '[V] Show [D]iff'})
+
+			vim.keymap.set('n', '<leader>fd', '<cmd>Gitsigns diffthis<CR>', { desc = '[F]ocus this [D]iff'})
 
 			require('gitsigns').setup()
 		end
