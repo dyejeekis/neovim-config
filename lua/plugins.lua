@@ -130,7 +130,7 @@ return {
 			vim.keymap.set('n', '<leader>sf', '<cmd>Telescope grep_string search=<CR>', { desc = '[S]earch [F]uzzily in current dir' })
 
 			vim.keymap.set('n', '<leader>ss', builtin.git_status, { desc = '[S]earch Git [S]tatus' })
-			vim.keymap.set('n', '<leader>scs', builtin.git_commits, { desc = '[S]earch Git Co[M]mits' })
+			vim.keymap.set('n', '<leader>sm', builtin.git_commits, { desc = '[S]earch Git Co[M]mits' })
 			vim.keymap.set('n', '<leader>sb', builtin.git_branches, { desc = '[S]earch Git [B]ranches' })
 
 			-- Slightly advanced example of overriding default behavior and theme
