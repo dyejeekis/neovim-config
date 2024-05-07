@@ -111,7 +111,8 @@ vim.cmd([[
 	" Buffers
 	nnoremap <C-n> :bn<CR>
 	nnoremap <C-p> :bp<CR>
-	map <leader>; :ls<CR>
+	map <leader>bb :ls<CR>
+	map <leader>be :ene<CR>
 	map <leader>bn :bn<CR>
 	map <leader>bp :bp<CR>
 	map <leader>bd :bd<CR>
