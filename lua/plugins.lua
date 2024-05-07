@@ -120,17 +120,18 @@ return {
 
 			vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
 			vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
-			vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
+			vim.keymap.set('n', '<leader>sl', builtin.builtin, { desc = '[S]earch Se[L]ect Telescope' })
 			vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
 			vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
 			vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
 			vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
 			vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
 			vim.keymap.set('n', '<leader>sc', builtin.colorscheme, { desc = '[S]earch [C]olorschemes' })
+			vim.keymap.set('n', '<leader>sf', '<cmd>Telescope grep_string search=<CR>', { desc = '[S]earch [F]uzzily in current dir' })
 
-			vim.keymap.set('n', '<leader>vs', builtin.git_status, { desc = '[V] Show [S]tatus' })
-			vim.keymap.set('n', '<leader>vc', builtin.git_commits, { desc = '[V] Show [C]ommits' })
-			vim.keymap.set('n', '<leader>vb', builtin.git_branches, { desc = '[V] Show [B]ranches' })
+			vim.keymap.set('n', '<leader>ss', builtin.git_status, { desc = '[S]earch Git [S]tatus' })
+			vim.keymap.set('n', '<leader>scs', builtin.git_commits, { desc = '[S]earch Git Co[M]mits' })
+			vim.keymap.set('n', '<leader>sb', builtin.git_branches, { desc = '[S]earch Git [B]ranches' })
 
 			-- Slightly advanced example of overriding default behavior and theme
 			vim.keymap.set('n', '<leader>s/', function()
@@ -336,7 +337,7 @@ return {
 					['<S-Tab>'] = cmp.mapping.select_prev_item(),
 
 					-- Manually trigger a completion from nvim-cmp.
-					['<C-Space>'] = cmp.mapping.complete {},
+					-- ['<C-Space>'] = cmp.mapping.complete {},
 				},
 				sources = {
 					{ name = 'nvim_lsp' },
