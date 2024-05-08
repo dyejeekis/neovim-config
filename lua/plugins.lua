@@ -131,7 +131,7 @@ return {
 
 			vim.keymap.set('n', '<leader>ss', builtin.git_status, { desc = '[S]earch Git [S]tatus' })
 			vim.keymap.set('n', '<leader>sm', builtin.git_commits, { desc = '[S]earch Git Co[M]mits' })
-			vim.keymap.set('n', '<leader>sb', builtin.git_branches, { desc = '[S]earch Git [B]ranches' })
+			vim.keymap.set('n', '<leader>sn', builtin.git_branches, { desc = '[S]earch Git Bra[N]ches' })
 
 			-- Slightly advanced example of overriding default behavior and theme
 			vim.keymap.set('n', '<leader>s/', function()
@@ -152,9 +152,9 @@ return {
 			end, { desc = '[S]earch in [O]pen Files' })
 
 			-- Shortcut for searching your Neovim configuration files
-			vim.keymap.set('n', '<leader>sn', function()
+			vim.keymap.set('n', '<leader>sv', function()
 				builtin.find_files { cwd = vim.fn.stdpath 'config' }
-			end, { desc = '[S]earch [N]eovim files' })
+			end, { desc = '[S]earch Neo[V]im files' })
 		end,
 	},
 
