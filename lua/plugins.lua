@@ -98,6 +98,8 @@ return {
 					},
 					n = {
 						-- ["kj"] = "close",
+						['<C-k>'] = 'preview_scrolling_up',
+						['<C-j>'] = 'preview_scrolling_down',
 					},
 			  },
 				},
