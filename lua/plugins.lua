@@ -335,8 +335,8 @@ return {
 
 					-- If you prefer more traditional completion keymaps
 					['<CR>'] = cmp.mapping.confirm { select = true },
-					['<Tab>'] = cmp.mapping.select_next_item(),
-					['<S-Tab>'] = cmp.mapping.select_prev_item(),
+					-- ['<Tab>'] = cmp.mapping.select_next_item(),
+					-- ['<S-Tab>'] = cmp.mapping.select_prev_item(),
 
 					-- Manually trigger a completion from nvim-cmp.
 					-- ['<C-Space>'] = cmp.mapping.complete {},
@@ -416,4 +416,16 @@ return {
 	-- 	--    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 	-- 	end,
 	-- },
+
+	{ -- Copilot
+		'github/copilot.vim',
+		config = function ()
+			vim.keymap.set('i', '<C-o>', '<Plug>(copilot-accept-word)')
+			-- vim.keymap.set('i', '<C-i>', '<Plug>(copilot-accept-line)')
+
+			vim.keymap.set('n', '<leader>id', '<cmd>Copilot disable<CR>', { desc = 'Cop[I]lot [D]isable' })
+			vim.keymap.set('n', '<leader>ie', '<cmd>Copilot enable<CR>', { desc = 'Cop[I]lot [E]nable' })
+			vim.keymap.set('n', '<leader>is', '<cmd>Copilot status<CR>', { desc = 'Cop[I]lot [S]tatus' })
+		end
+	},
 }
