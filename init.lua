@@ -123,6 +123,10 @@ vim.cmd([[
 	map <leader>fE :Vexplore!<CR>
 	map <leader>ft :terminal<CR>
 	map <leader>fT <C-w>s<C-w>w:terminal<CR>
+
+	" Exit vim
+	map <leader>qq :qa<CR>
+	map <leader>QQ :qa!<CR>
 ]])
 
 -- Use powershell as terminal

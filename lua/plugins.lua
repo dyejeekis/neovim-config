@@ -420,12 +420,12 @@ return {
 	{ -- Copilot
 		'github/copilot.vim',
 		config = function ()
-			vim.keymap.set('i', '<C-o>', '<Plug>(copilot-accept-word)')
-			-- vim.keymap.set('i', '<C-i>', '<Plug>(copilot-accept-line)')
+			vim.keymap.set('i', '<C-a>', '<Plug>(copilot-accept-word)')
+			vim.keymap.set('i', '<C-s>', '<Plug>(copilot-accept-line)')
 
 			vim.keymap.set('n', '<leader>id', '<cmd>Copilot disable<CR>', { desc = 'Cop[I]lot [D]isable' })
 			vim.keymap.set('n', '<leader>ie', '<cmd>Copilot enable<CR>', { desc = 'Cop[I]lot [E]nable' })
 			vim.keymap.set('n', '<leader>is', '<cmd>Copilot status<CR>', { desc = 'Cop[I]lot [S]tatus' })
-		end
+		end,
 	},
 }
