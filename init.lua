@@ -124,6 +124,10 @@ vim.cmd([[
 	map <leader>ft :terminal<CR>
 	map <leader>fT <C-w>s<C-w>w:terminal<CR>
 
+	" Write buffer
+	map <leader>ww :up<CR>
+	map <leader>wa :wa<CR>
+
 	" Exit vim
 	map <leader>qq :qa<CR>
 	map <leader>QQ :qa!<CR>
@@ -144,7 +148,33 @@ end
 vim.cmd([[
 	" Highlight yanked text
 	au TextYankPost * silent! lua vim.highlight.on_yank()
+
+	" Enable relative line numbers only for active buffer
+	augroup numbertoggle
+		autocmd!
+		autocmd BufEnter,WinEnter,FocusGained,InsertLeave * set relativenumber
+		autocmd BufLeave,WinLeave,FocusLost,InsertEnter * set norelativenumber
+	augroup END
 ]])
+
+
+-- Autosave
+vim.keymap.set('n', '<leader>ae', function ()
+	vim.cmd([[
+		augroup autosave
+			autocmd!
+			autocmd TextChanged,TextChangedI * silent! update
+		augroup END
+	]])
+	print('Autosave enabled')
+end, { desc = '[A]utosave [E]nable' })
+
+vim.keymap.set('n', '<leader>ad', function ()
+	vim.cmd([[
+		autocmd! autosave
+	]])
+	print('Autosave disabled')
+end, { desc = '[A]utosave [D]isable' })
 
 -- Reload config script
 require 'user.reload'

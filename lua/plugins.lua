@@ -1,6 +1,5 @@
 return {
 	-- No config plugins
-	-- 'pocco81/auto-save.nvim',
 	'tpope/vim-rhubarb',
 
 	{ -- Enable transparent background for all themes
@@ -131,9 +130,10 @@ return {
 			vim.keymap.set('n', '<leader>sc', builtin.colorscheme, { desc = '[S]earch [C]olorschemes' })
 			vim.keymap.set('n', '<leader>sf', '<cmd>Telescope grep_string search=<CR>', { desc = '[S]earch [F]uzzily in current dir' })
 
-			vim.keymap.set('n', '<leader>ss', builtin.git_status, { desc = '[S]earch Git [S]tatus' })
-			vim.keymap.set('n', '<leader>sm', builtin.git_commits, { desc = '[S]earch Git Co[M]mits' })
-			vim.keymap.set('n', '<leader>sn', builtin.git_branches, { desc = '[S]earch Git Bra[N]ches' })
+			vim.keymap.set('n', '<leader>ss', builtin.git_status, { desc = '[S]earch [S]tatus' })
+			vim.keymap.set('n', '<leader>sb', builtin.git_bcommits, { desc = '[S]earch [B]uffer Commits' })
+			vim.keymap.set('n', '<leader>sm', builtin.git_commits, { desc = '[S]earch Co[M]mits' })
+			vim.keymap.set('n', '<leader>sn', builtin.git_branches, { desc = '[S]earch Bra[N]ches' })
 
 			-- Slightly advanced example of overriding default behavior and theme
 			vim.keymap.set('n', '<leader>s/', function()
@@ -415,8 +415,15 @@ return {
 	{ -- Copilot
 		'github/copilot.vim',
 		config = function ()
-			vim.keymap.set('i', '<C-a>', '<Plug>(copilot-accept-word)')
-			vim.keymap.set('i', '<C-s>', '<Plug>(copilot-accept-line)')
+			vim.keymap.set('i', '<C-a>', '<Plug>(copilot-accept-word)', { desc = '<C-a> Copilot Accept Word' })
+			vim.keymap.set('i', '<C-s>', '<Plug>(copilot-accept-line)', { desc = '<C-s> Copilot Accept Line' })
+
+			vim.keymap.set('i', '<C-q>', 'copilot#Accept("\\<CR>")', {
+				expr = true,
+				replace_keycodes = false,
+				desc = '<C-q> Copilot Accept',
+			})
+			vim.g.copilot_no_tab_map = true
 
 			vim.keymap.set('n', '<leader>id', '<cmd>Copilot disable<CR>', { desc = 'Cop[I]lot [D]isable' })
 			vim.keymap.set('n', '<leader>ie', '<cmd>Copilot enable<CR>', { desc = 'Cop[I]lot [E]nable' })
