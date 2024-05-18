@@ -247,13 +247,14 @@ return {
 			-- Enable the following language servers
 			local servers = {
 				clangd = {},
+				rust_analyzer = {},
 
 				lua_ls = {
-				-- cmd = {...},
-				-- filetypes = { ...},
-				-- capabilities = {},
-				settings = {
-					Lua = {
+					-- cmd = {...},
+					-- filetypes = { ...},
+					-- capabilities = {},
+					settings = {
+						Lua = {
 							-- completion = {
 							-- 	callSnippet = 'Replace',
 							-- },
@@ -331,10 +332,10 @@ return {
 					-- -- Accept ([y]es) the completion.
 					-- --  This will auto-import if your LSP supports it.
 					-- --  This will expand snippets if the LSP sent a snippet.
-					-- ['<C-y>'] = cmp.mapping.confirm { select = true },
+					['<C-y>'] = cmp.mapping.confirm { select = true },
 
 					-- If you prefer more traditional completion keymaps
-					['<CR>'] = cmp.mapping.confirm { select = true },
+					-- ['<CR>'] = cmp.mapping.confirm { select = true },
 					-- ['<Tab>'] = cmp.mapping.select_next_item(),
 					-- ['<S-Tab>'] = cmp.mapping.select_prev_item(),
 
@@ -388,7 +389,7 @@ return {
 	'nvim-treesitter/nvim-treesitter',
 	build = ':TSUpdate',
 	opts = {
-		ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc' },
+		ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc' , 'rust' },
 		auto_install = true,
 		highlight = {
 			enable = true,
@@ -425,8 +426,14 @@ return {
 			})
 			vim.g.copilot_no_tab_map = true
 
-			vim.keymap.set('n', '<leader>id', '<cmd>Copilot disable<CR>', { desc = 'Cop[I]lot [D]isable' })
-			vim.keymap.set('n', '<leader>ie', '<cmd>Copilot enable<CR>', { desc = 'Cop[I]lot [E]nable' })
+			vim.keymap.set('n', '<leader>id', function ()
+				vim.cmd('Copilot disable')
+				print('Copilot disabled')
+			end	, { desc = 'Cop[I]lot [D]isable' })
+			vim.keymap.set('n', '<leader>ie', function ()
+				vim.cmd('Copilot enable')
+				print('Copilot enabled')
+			end, { desc = 'Cop[I]lot [E]nable' })
 			vim.keymap.set('n', '<leader>is', '<cmd>Copilot status<CR>', { desc = 'Cop[I]lot [S]tatus' })
 		end,
 	},
