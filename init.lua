@@ -21,7 +21,7 @@ vim.cmd([[
 	set visualbell
 
 	" Use system clipboard
-	set clipboard+=unnamed   
+	set clipboard^=unnamed,unnamedplus
 
 	"" Key mappings
 	"" ========================================================
