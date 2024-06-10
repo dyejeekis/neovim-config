@@ -413,28 +413,28 @@ return {
 		end,
 	},
 
-	{ -- Copilot
-		'github/copilot.vim',
-		config = function ()
-			vim.keymap.set('i', '<C-a>', '<Plug>(copilot-accept-word)', { desc = '<C-a> Copilot Accept Word' })
-			vim.keymap.set('i', '<C-s>', '<Plug>(copilot-accept-line)', { desc = '<C-s> Copilot Accept Line' })
-
-			vim.keymap.set('i', '<C-q>', 'copilot#Accept("\\<CR>")', {
-				expr = true,
-				replace_keycodes = false,
-				desc = '<C-q> Copilot Accept',
-			})
-			vim.g.copilot_no_tab_map = true
-
-			vim.keymap.set('n', '<leader>id', function ()
-				vim.cmd('Copilot disable')
-				print('Copilot disabled')
-			end	, { desc = 'Cop[I]lot [D]isable' })
-			vim.keymap.set('n', '<leader>ie', function ()
-				vim.cmd('Copilot enable')
-				print('Copilot enabled')
-			end, { desc = 'Cop[I]lot [E]nable' })
-			vim.keymap.set('n', '<leader>is', '<cmd>Copilot status<CR>', { desc = 'Cop[I]lot [S]tatus' })
-		end,
-	},
+	-- { -- Copilot
+	-- 	'github/copilot.vim',
+	-- 	config = function ()
+	-- 		vim.keymap.set('i', '<C-a>', '<Plug>(copilot-accept-word)', { desc = '<C-a> Copilot Accept Word' })
+	-- 		vim.keymap.set('i', '<C-s>', '<Plug>(copilot-accept-line)', { desc = '<C-s> Copilot Accept Line' })
+	--
+	-- 		vim.keymap.set('i', '<C-q>', 'copilot#Accept("\\<CR>")', {
+	-- 			expr = true,
+	-- 			replace_keycodes = false,
+	-- 			desc = '<C-q> Copilot Accept',
+	-- 		})
+	-- 		vim.g.copilot_no_tab_map = true
+	--
+	-- 		vim.keymap.set('n', '<leader>id', function ()
+	-- 			vim.cmd('Copilot disable')
+	-- 			print('Copilot disabled')
+	-- 		end	, { desc = 'Cop[I]lot [D]isable' })
+	-- 		vim.keymap.set('n', '<leader>ie', function ()
+	-- 			vim.cmd('Copilot enable')
+	-- 			print('Copilot enabled')
+	-- 		end, { desc = 'Cop[I]lot [E]nable' })
+	-- 		vim.keymap.set('n', '<leader>is', '<cmd>Copilot status<CR>', { desc = 'Cop[I]lot [S]tatus' })
+	-- 	end,
+	-- },
 }
