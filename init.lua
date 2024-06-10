@@ -171,7 +171,7 @@ end, { desc = '[A]utosave [E]nable' })
 
 vim.keymap.set('n', '<leader>ad', function ()
 	vim.cmd([[
-		autocmd! autosave
+		silent! autocmd! autosave
 	]])
 	print('Autosave disabled')
 end, { desc = '[A]utosave [D]isable' })
