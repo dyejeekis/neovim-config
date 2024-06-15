@@ -340,11 +340,12 @@ return {
 					-- ['<S-Tab>'] = cmp.mapping.select_prev_item(),
 
 					-- Manually trigger a completion from nvim-cmp.
-					-- ['<C-Space>'] = cmp.mapping.complete {},
+					['<C-Space>'] = cmp.mapping.complete {},
 				},
 				sources = {
 					{ name = 'nvim_lsp' },
 					{ name = 'luasnip' },
+					-- { name = 'buffer' },
 					{ name = 'path' },
 				},
 			}
