@@ -100,6 +100,8 @@ vim.cmd([[
 	map <leader>' :reg<CR>
 
 	" Tabs
+	nnoremap <C-n> :tabn<CR>
+	nnoremap <C-p> :tabp<CR>
 	map <leader>tt :tabs<CR>
 	map <leader>te :tabe<CR>
 	map <leader>tE :$tabe<CR>
@@ -109,8 +111,6 @@ vim.cmd([[
 	map <leader>to :tabo<CR>
 
 	" Buffers
-	nnoremap <C-n> :bn<CR>
-	nnoremap <C-p> :bp<CR>
 	map <leader>bb :ls<CR>
 	map <leader>be :ene<CR>
 	map <leader>bn :bn<CR>
