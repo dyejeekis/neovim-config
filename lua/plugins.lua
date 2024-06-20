@@ -117,8 +117,9 @@ return {
 			-- Telescope keymaps, see `:help telescope.builtin`
 			local builtin = require 'telescope.builtin'
 			vim.keymap.set('n', '<leader>;', builtin.find_files, { desc = '[ ] Find files' })
-			vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+			-- vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
+			vim.keymap.set('n', '<leader>su', builtin.buffers, { desc = '[S]earch existing b[U]ffers' })
 			vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
 			vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
 			vim.keymap.set('n', '<leader>sl', builtin.builtin, { desc = '[S]earch Se[L]ect Telescope' })
@@ -130,10 +131,10 @@ return {
 			vim.keymap.set('n', '<leader>sc', builtin.colorscheme, { desc = '[S]earch [C]olorschemes' })
 			vim.keymap.set('n', '<leader>sf', '<cmd>Telescope grep_string search=<CR>', { desc = '[S]earch [F]uzzily in current dir' })
 
-			vim.keymap.set('n', '<leader>ss', builtin.git_status, { desc = '[S]earch [S]tatus' })
-			vim.keymap.set('n', '<leader>sb', builtin.git_bcommits, { desc = '[S]earch [B]uffer Commits' })
-			vim.keymap.set('n', '<leader>sm', builtin.git_commits, { desc = '[S]earch Co[M]mits' })
-			vim.keymap.set('n', '<leader>sn', builtin.git_branches, { desc = '[S]earch Bra[N]ches' })
+			vim.keymap.set('n', '<leader>ss', builtin.git_status, { desc = 'Git [S]earch [S]tatus' })
+			vim.keymap.set('n', '<leader>sb', builtin.git_bcommits, { desc = 'Git [S]earch [B]uffer Commits' })
+			vim.keymap.set('n', '<leader>sm', builtin.git_commits, { desc = 'Git [S]earch Co[M]mits' })
+			vim.keymap.set('n', '<leader>sn', builtin.git_branches, { desc = 'Git [S]earch Bra[N]ches' })
 
 			-- Slightly advanced example of overriding default behavior and theme
 			vim.keymap.set('n', '<leader>s/', function()
