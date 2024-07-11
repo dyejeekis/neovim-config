@@ -403,7 +403,7 @@ return {
 		indent = { enable = true, disable = { 'ruby' } },
 	},
 	config = function(_, opts)
-		require('nvim-treesitter.install').compilers = { 'clang', 'gcc' }
+		require('nvim-treesitter.install').compilers = { 'clang', 'gcc', 'zig' }
 		-- Prefer git instead of curl in order to improve connectivity in some environments
 		require('nvim-treesitter.install').prefer_git = true
 		---@diagnostic disable-next-line: missing-fields
