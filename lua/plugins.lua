@@ -23,6 +23,8 @@ return {
 
 			-- Enable transparent background for all themes
 			vim.g.transparent_enabled = true
+
+			vim.keymap.set('n', '<leader>rt', '<cmd>TransparentToggle<CR>', { desc = 'T[R]ansparent [T]oggle'})
 		end
 	},
 
