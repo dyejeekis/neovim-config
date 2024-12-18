@@ -131,6 +131,9 @@ vim.cmd([[
 	" Exit vim
 	map <leader>qq :qa<CR>
 	map <leader>QQ :qa!<CR>
+
+	" Other actions
+	map <leader>aa gg<S-v><S-g>
 ]])
 
 -- Use powershell as terminal
