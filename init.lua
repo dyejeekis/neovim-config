@@ -71,10 +71,12 @@ vim.cmd([[
 	nnoremap <C-k> <C-u>
 	nnoremap <C-d> <C-f>
 	nnoremap <C-f> <C-b>
+	nnoremap <C-u> <C-y>
 	vnoremap <C-j> <C-d>
 	vnoremap <C-k> <C-u>
 	vnoremap <C-d> <C-f>
 	vnoremap <C-f> <C-b>
+	vnoremap <C-u> <C-y>
 
 	" Easy visual indentation
 	vnoremap < <gv
