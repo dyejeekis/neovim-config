@@ -77,6 +77,7 @@ return {
 				end,
 			},
 			{ 'nvim-telescope/telescope-ui-select.nvim' },
+			{ 'nvim-tree/nvim-web-devicons' },
 		},
 		config = function()
 			-- The easiest way to use Telescope, is to start by doing something like:
@@ -430,6 +431,7 @@ return {
 		--    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 		end,
 	},
+
 	{ -- Highlight other uses of the word under the cursor using either LSP, Tree-sitter, or regex matching
 		'RRethy/vim-illuminate',
 		config = function ()
@@ -488,5 +490,34 @@ return {
 				case_insensitive_regex = false,
 			})
 		end
+	},
+
+	{
+	"mikavilpas/yazi.nvim",
+	event = "VeryLazy",
+	keys = {
+		{
+			"<leader>cf",
+			mode = { "n", "v" },
+			"<cmd>Yazi<cr>",
+			desc = "Open yazi at the current file",
+		},
+		{
+			"<leader>cw",
+			"<cmd>Yazi cwd<cr>",
+			desc = "Open the file manager in nvim's working directory",
+		},
+		{
+			"<leader>cr",
+			"<cmd>Yazi toggle<cr>",
+			desc = "Resume the last yazi session",
+		},
+	},
+	opts = {
+			open_for_directories = false,
+			keymaps = {
+				show_help = "<f1>",
+			},
+		},
 	},
 }
