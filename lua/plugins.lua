@@ -497,20 +497,15 @@ return {
 		event = "VeryLazy",
 		keys = {
 			{
-				"<leader>cf",
+				"<leader>yf",
 				mode = { "n", "v" },
 				"<cmd>Yazi<cr>",
-				desc = "Open yazi at the current file",
+				desc = "Open [Y]azi at the current [F]ile",
 			},
 			{
-				"<leader>cw",
+				"<leader>yw",
 				"<cmd>Yazi cwd<cr>",
-				desc = "Open the file manager in nvim's working directory",
-			},
-			{
-				"<leader>cr",
-				"<cmd>Yazi toggle<cr>",
-				desc = "Resume the last yazi session",
+				desc = "Open [Y]azi in nvim's [W]orking directory",
 			},
 		},
 		opts = {
