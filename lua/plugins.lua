@@ -497,15 +497,15 @@ return {
 		event = "VeryLazy",
 		keys = {
 			{
-				"<leader>yf",
+				"<leader>yu",
 				mode = { "n", "v" },
 				"<cmd>Yazi<cr>",
-				desc = "Open [Y]azi at the current [F]ile",
+				desc = "Open [Y]azi at the c[U]rrent file",
 			},
 			{
-				"<leader>yw",
+				"<leader>yy",
 				"<cmd>Yazi cwd<cr>",
-				desc = "Open [Y]azi in nvim's [W]orking directory",
+				desc = "Open [Y]azi in nvim's working director[Y]",
 			},
 		},
 		opts = {
@@ -514,5 +514,26 @@ return {
 				show_help = "<f1>",
 			},
 		},
+	},
+
+	{
+		"kdheepak/lazygit.nvim",
+		lazy = true,
+		cmd = {
+			"LazyGit",
+			"LazyGitConfig",
+			"LazyGitCurrentFile",
+			"LazyGitFilter",
+			"LazyGitFilterCurrentFile",
+		},
+		-- optional for floating window border decoration
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+		-- setting the keybinding for LazyGit with 'keys' is recommended in
+		-- order to load the plugin when the command is run for the first time
+		keys = {
+			{ "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" }
+		}
 	},
 }
