@@ -163,6 +163,12 @@ vim.cmd([[
 		autocmd BufEnter,WinEnter,FocusGained,InsertLeave * set relativenumber
 		autocmd BufLeave,WinLeave,FocusLost,InsertEnter * set norelativenumber
 	augroup END
+
+	" Disable netrw file explorer
+	augroup goodbye_netrw
+		au!
+		autocmd VimEnter * silent! au! FileExplorer *
+	augroup END
 ]])
 
 

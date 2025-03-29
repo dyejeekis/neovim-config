@@ -16,7 +16,7 @@ return {
 		lazy = false,
 		config = function ()
 			-- Load the colorscheme here.
-			vim.cmd.colorscheme 'nightfox'
+			vim.cmd.colorscheme 'catppuccin'
 
 			-- You can configure highlights by doing something like:
 			-- vim.cmd.hi 'Comment gui=none'
