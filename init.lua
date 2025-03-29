@@ -152,13 +152,13 @@ if vim.fn.has 'win32' == 1 then
 	]])
 end
 
--- Neovim settings
+-- Startup autocommands
 vim.cmd([[
 	" Highlight yanked text
 	au TextYankPost * silent! lua vim.highlight.on_yank()
 
 	" Enable relative line numbers only for active buffer
-	augroup numbertoggle
+	augroup number_toggle
 		autocmd!
 		autocmd BufEnter,WinEnter,FocusGained,InsertLeave * set relativenumber
 		autocmd BufLeave,WinLeave,FocusLost,InsertEnter * set norelativenumber
@@ -171,6 +171,17 @@ vim.cmd([[
 	augroup END
 ]])
 
+-- Open telescope on startup
+vim.api.nvim_create_augroup("TelescopeOnDirOpen", { clear = true })
+vim.api.nvim_create_autocmd("VimEnter", {
+    group = "TelescopeOnDirOpen",
+    callback = function()
+        local arg = vim.fn.argv(0)
+        if arg == "" or vim.fn.isdirectory(arg) == 1 then
+            require("telescope.builtin").find_files()
+        end
+    end
+})
 
 -- Autosave
 vim.keymap.set('n', '<leader>ae', function ()
