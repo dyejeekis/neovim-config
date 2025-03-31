@@ -111,6 +111,7 @@ vim.cmd([[
 	map <leader>tp :tabp<CR>
 	map <leader>tc :tabc<CR>
 	map <leader>to :tabo<CR>
+	map <leader>tm :tabm<CR>
 
 	" Buffers
 	map <leader>bb :ls<CR>
@@ -119,12 +120,6 @@ vim.cmd([[
 	map <leader>bp :bp<CR>
 	map <leader>bd :bd<CR>
 	map <leader>bw :bw!<CR>
-
-	" Focus various windows
-	map <leader>fe :Explore<CR>
-	map <leader>fE :Vexplore!<CR>
-	map <leader>ft :terminal<CR>
-	map <leader>fT <C-w>s<C-w>w:terminal<CR>
 
 	" Diagnostics
 	map <leader>df :lua vim.diagnostic.open_float()<CR>

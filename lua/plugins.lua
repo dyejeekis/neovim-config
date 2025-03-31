@@ -16,7 +16,7 @@ return {
 		lazy = false,
 		config = function ()
 			-- Load the colorscheme here.
-			vim.cmd.colorscheme 'catppuccin'
+			vim.cmd.colorscheme 'dracula-soft'
 
 			-- You can configure highlights by doing something like:
 			-- vim.cmd.hi 'Comment gui=none'
@@ -497,15 +497,15 @@ return {
 		event = "VeryLazy",
 		keys = {
 			{
-				"<leader>yu",
+				"<leader>y",
 				mode = { "n", "v" },
 				"<cmd>Yazi<cr>",
-				desc = "Open [Y]azi at the c[U]rrent file",
+				desc = "Open yazi (current file)",
 			},
 			{
-				"<leader>yy",
+				"<leader>Y",
 				"<cmd>Yazi cwd<cr>",
-				desc = "Open [Y]azi in nvim's working director[Y]",
+				desc = "Open yazi (current working dir)",
 			},
 		},
 		opts = {
@@ -533,7 +533,7 @@ return {
 		-- setting the keybinding for LazyGit with 'keys' is recommended in
 		-- order to load the plugin when the command is run for the first time
 		keys = {
-			{ "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" }
+			{ "<leader>l", "<cmd>LazyGit<cr>", desc = "LazyGit" }
 		}
 	},
 }
