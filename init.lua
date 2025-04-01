@@ -196,6 +196,9 @@ vim.keymap.set('n', '<leader>ad', function ()
 	print('Autosave disabled')
 end, { desc = '[A]utosave [D]isable' })
 
+-- Diagnostics config
+vim.diagnostic.config({ virtual_text = true })
+
 -- Toggle diagnostics
 vim.keymap.set('n', '<leader>dt', function()
 	vim.diagnostic.enable(not vim.diagnostic.is_enabled())
