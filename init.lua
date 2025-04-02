@@ -166,14 +166,14 @@ vim.cmd([[
 	augroup END
 ]])
 
--- Open telescope on startup
-vim.api.nvim_create_augroup("TelescopeOnDirOpen", { clear = true })
+-- Open home screen
 vim.api.nvim_create_autocmd("VimEnter", {
-    group = "TelescopeOnDirOpen",
+    group = vim.api.nvim_create_augroup('open-home-screen', { clear = true }),
     callback = function()
 		-- Ensure exactly one argument is passed and it's a directory
         if vim.fn.argc() == 1 and vim.fn.isdirectory(vim.fn.argv(0)) == 1 then
-            require("telescope.builtin").find_files()
+            -- require("telescope.builtin").find_files()
+			vim.cmd("lua MiniStarter.open()") -- Open mini.starter
         end
     end
 })

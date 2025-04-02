@@ -10,13 +10,23 @@ return {
 			'EdenEast/nightfox.nvim',
 			'ellisonleao/gruvbox.nvim',
 			'Mofiqul/dracula.nvim',
+			'Shatur/neovim-ayu',
+			'sainnhe/everforest',
+			'rebelot/kanagawa.nvim',
+			'bluz71/vim-moonfly-colors',
+			'bluz71/vim-nightfly-colors',
+			'scottmckendry/cyberdream.nvim',
+			'olimorris/onedarkpro.nvim',
+			'xero/miasma.nvim',
+			'vague2k/vague.nvim',
+			'patstockwell/vim-monokai-tasty',
 			{ "catppuccin/nvim", name = "catppuccin" }
 		},
 		priority = 1000,
 		lazy = false,
 		config = function ()
 			-- Load the colorscheme here.
-			vim.cmd.colorscheme 'dracula-soft'
+			vim.cmd.colorscheme 'moonfly'
 
 			-- You can configure highlights by doing something like:
 			-- vim.cmd.hi 'Comment gui=none'
@@ -376,6 +386,10 @@ return {
 		  -- - sr)'  - [S]urround [R]eplace [)] [']
 		  require('mini.surround').setup()
 
+		  require('mini.starter').setup {
+			header = vim.fn.getcwd(),
+		    autoopen = false,
+		  }
 		  -- Simple and easy statusline.
 		  --  You could remove this setup call if you don't like it,
 		  --  and try some other statusline plugin
