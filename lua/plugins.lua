@@ -307,6 +307,31 @@ return {
 		end,
 	},
 
+	{ -- Debug adapter
+	  'mfussenegger/nvim-dap',
+	  config = function()
+		local dap = require('dap')
+		dap.adapters.godot = {
+		  type = 'server',
+		  host = '127.0.0.1',
+		  port = 6006,
+		}
+		dap.configurations.gdscript = {
+		  {
+			type = 'godot',
+			request = 'launch',
+			name = 'Launch scene',
+			project = '${workspaceFolder}',
+		  },
+		}
+		vim.keymap.set('n', '<leader>dt', '<cmd>DapToggleBreakpoint<cr>', { desc = '[D]ap [T]oggle breakpoint' })
+		vim.keymap.set('n', '<leader>dc', '<cmd>DapContinue<cr>', { desc = '[D]ap [C]ontinue' })
+		vim.keymap.set('n', '<leader>do', '<cmd>DapStepOver<cr>', { desc = '[D]ap Step [O]ver' })
+		vim.keymap.set('n', '<leader>di', '<cmd>DapStepInto<cr>', { desc = '[D]ap Step [I]nto' })
+		vim.keymap.set('n', '<leader>du', '<cmd>DapStepOut<cr>', { desc = '[D]ap Step o[U]t' })
+	  end
+	},
+
 	{
 		-- Autocompletion
 		'hrsh7th/nvim-cmp',
