@@ -112,6 +112,7 @@ vim.cmd([[
 	map <leader>tc :tabc<CR>
 	map <leader>to :tabo<CR>
 	map <leader>tm :tabm<CR>
+	map <leader>ts :tab split<CR>
 
 	" Buffers
 	map <leader>bb :ls<CR>
@@ -120,9 +121,6 @@ vim.cmd([[
 	map <leader>bp :bp<CR>
 	map <leader>bd :bd<CR>
 	map <leader>bw :bw!<CR>
-
-	" Diagnostics
-	map <leader>df :lua vim.diagnostic.open_float()<CR>
 
 	" Write buffer
 	map <leader>ww :up<CR>
@@ -200,8 +198,13 @@ end, { desc = '[A]utosave [D]isable' })
 vim.diagnostic.config({ virtual_text = true })
 
 -- Toggle diagnostics
-vim.keymap.set('n', '<leader>dt', function()
+vim.keymap.set('n', '<leader>nt', function()
 	vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+end, { silent = true, noremap = true })
+
+-- Show floating diagnostics
+vim.keymap.set('n', '<leader>nf', function()
+	vim.diagnostic.open_float()
 end, { silent = true, noremap = true })
 
 -- Reload config script
