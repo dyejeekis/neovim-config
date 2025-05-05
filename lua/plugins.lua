@@ -132,7 +132,7 @@ return {
 			vim.keymap.set('n', '<leader>;', builtin.find_files, { desc = '[ ] Find files' })
 			-- vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
-			vim.keymap.set('n', '<leader>su', builtin.buffers, { desc = '[S]earch existing b[U]ffers' })
+			vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = 'Search existing buffers' })
 			vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
 			vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
 			vim.keymap.set('n', '<leader>sl', builtin.builtin, { desc = '[S]earch Se[L]ect Telescope' })
