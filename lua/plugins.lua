@@ -26,7 +26,7 @@ return {
 		lazy = false,
 		config = function ()
 			-- Load the colorscheme here.
-			vim.cmd.colorscheme 'moonfly'
+			vim.cmd.colorscheme 'dracula-soft'
 
 			-- You can configure highlights by doing something like:
 			-- vim.cmd.hi 'Comment gui=none'
