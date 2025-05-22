@@ -72,11 +72,13 @@ vim.cmd([[
 	nnoremap <C-d> <C-f>
 	nnoremap <C-f> <C-b>
 	nnoremap <C-u> <C-y>
+	nnoremap <C-y> <C-e>
 	vnoremap <C-j> <C-d>
 	vnoremap <C-k> <C-u>
 	vnoremap <C-d> <C-f>
 	vnoremap <C-f> <C-b>
 	vnoremap <C-u> <C-y>
+	vnoremap <C-y> <C-e>
 
 	" Easy visual indentation
 	vnoremap < <gv
@@ -102,8 +104,8 @@ vim.cmd([[
 	map <leader>' :reg<CR>
 
 	" Tabs
-	nnoremap <C-n> :tabn<CR>
-	nnoremap <C-p> :tabp<CR>
+	" nnoremap <C-n> :tabn<CR>
+	" nnoremap <C-p> :tabp<CR>
 	map <leader>tt :tabs<CR>
 	map <leader>te :tabe<CR>
 	map <leader>tE :$tabe<CR>

@@ -20,13 +20,13 @@ return {
 			'xero/miasma.nvim',
 			'vague2k/vague.nvim',
 			'patstockwell/vim-monokai-tasty',
-			{ "catppuccin/nvim", name = "catppuccin" }
+			{ 'catppuccin/nvim', name = 'catppuccin' }
 		},
 		priority = 1000,
 		lazy = false,
 		config = function ()
 			-- Load the colorscheme here.
-			vim.cmd.colorscheme 'dracula-soft'
+			vim.cmd.colorscheme 'everforest'
 
 			-- You can configure highlights by doing something like:
 			-- vim.cmd.hi 'Comment gui=none'
@@ -109,7 +109,7 @@ return {
 						['<C-j>'] = 'preview_scrolling_down',
 					},
 					n = {
-						-- ["kj"] = "close",
+						-- ['kj'] = 'close',
 						['<C-k>'] = 'preview_scrolling_up',
 						['<C-j>'] = 'preview_scrolling_down',
 					},
@@ -339,23 +339,23 @@ return {
 			'nvim-neotest/nvim-nio'
 		},
 		config = function()
-		    require("dapui").setup()
-			local dap = require("dap")
+		    require('dapui').setup()
+			local dap = require('dap')
 			dap.listeners.before.attach.dapui_config = function()
-			  require("dapui").open()
+			  require('dapui').open()
 			end
 			dap.listeners.before.launch.dapui_config = function()
-			  require("dapui").open()
+			  require('dapui').open()
 			end
 			dap.listeners.before.event_terminated.dapui_config = function()
-			  require("dapui").close()
+			  require('dapui').close()
 			end
 			dap.listeners.before.event_exited.dapui_config = function()
-			  require("dapui").close()
+			  require('dapui').close()
 			end
 
 			vim.keymap.set('n', '<leader>dt', function ()
-				require("dapui").toggle()
+				require('dapui').toggle()
 			end, { desc = '[D]ap [T]oggle Dap UI' })
 		end
 	},
@@ -559,48 +559,87 @@ return {
 		end
 	},
 
-	{
-		"mikavilpas/yazi.nvim",
-		event = "VeryLazy",
+	{ -- Yazi
+		'mikavilpas/yazi.nvim',
+		event = 'VeryLazy',
 		keys = {
 			{
-				"<leader>y",
-				mode = { "n", "v" },
-				"<cmd>Yazi<cr>",
-				desc = "Open yazi (current file)",
+				'<leader>y',
+				mode = { 'n', 'v' },
+				'<cmd>Yazi<cr>',
+				desc = 'Open yazi (current file)',
 			},
 			{
-				"<leader>Y",
-				"<cmd>Yazi cwd<cr>",
-				desc = "Open yazi (current working dir)",
+				'<leader>Y',
+				'<cmd>Yazi cwd<cr>',
+				desc = 'Open yazi (current working dir)',
 			},
 		},
 		opts = {
 			open_for_directories = false,
 			keymaps = {
-				show_help = "<f1>",
+				show_help = '<f1>',
 			},
 		},
 	},
 
-	{
-		"kdheepak/lazygit.nvim",
+	{ -- LazyGit
+		'kdheepak/lazygit.nvim',
 		lazy = true,
 		cmd = {
-			"LazyGit",
-			"LazyGitConfig",
-			"LazyGitCurrentFile",
-			"LazyGitFilter",
-			"LazyGitFilterCurrentFile",
+			'LazyGit',
+			'LazyGitConfig',
+			'LazyGitCurrentFile',
+			'LazyGitFilter',
+			'LazyGitFilterCurrentFile',
 		},
 		-- optional for floating window border decoration
 		dependencies = {
-			"nvim-lua/plenary.nvim",
+			'nvim-lua/plenary.nvim',
 		},
 		-- setting the keybinding for LazyGit with 'keys' is recommended in
 		-- order to load the plugin when the command is run for the first time
 		keys = {
-			{ "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" }
+			{ '<leader>lg', '<cmd>LazyGit<cr>', desc = 'LazyGit' }
 		}
 	},
+
+	{ -- Harpoon
+		'ThePrimeagen/harpoon',
+		branch = 'harpoon2',
+		dependencies = {
+			'nvim-lua/plenary.nvim',
+			'nvim-telescope/telescope.nvim',
+		},
+		config = function ()
+			local harpoon = require('harpoon')
+			harpoon:setup()
+
+			vim.keymap.set('n', '<C-e>', function() harpoon:list():add() end)
+			-- Toggle previous & next buffers stored within Harpoon list
+			vim.keymap.set('n', '<C-p>', function() harpoon:list():prev() end)
+			vim.keymap.set('n', '<C-n>', function() harpoon:list():next() end)
+
+			-- basic telescope configuration
+			local conf = require('telescope.config').values
+			local function toggle_telescope(harpoon_files)
+				local file_paths = {}
+				for _, item in ipairs(harpoon_files.items) do
+					table.insert(file_paths, item.value)
+				end
+
+				require('telescope.pickers').new({}, {
+					prompt_title = 'Harpoon',
+					finder = require('telescope.finders').new_table({
+						results = file_paths,
+					}),
+					previewer = conf.file_previewer({}),
+					sorter = conf.generic_sorter({}),
+				}):find()
+			end
+
+			vim.keymap.set('n', '<leader>h', function() toggle_telescope(harpoon:list()) end,
+				{ desc = 'Open [H]arpoon window' })
+		end
+	}
 }
