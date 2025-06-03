@@ -11,7 +11,6 @@ return {
 			'ellisonleao/gruvbox.nvim',
 			'Mofiqul/dracula.nvim',
 			-- 'Shatur/neovim-ayu',
-			'sainnhe/everforest',
 			'rebelot/kanagawa.nvim',
 			'bluz71/vim-moonfly-colors',
 			-- 'bluz71/vim-nightfly-colors',
@@ -21,6 +20,42 @@ return {
 			'vague2k/vague.nvim',
 			-- 'patstockwell/vim-monokai-tasty',
 			{ 'catppuccin/nvim', name = 'catppuccin' },
+			{
+				'sainnhe/everforest',
+				config = function ()
+					vim.api.nvim_create_user_command("EverforestBackground", function(opts)
+					  local bg = opts.args
+					  if bg ~= "light" and bg ~= "dark" then
+						print("Invalid background: choose light or dark")
+						return
+					  end
+					  vim.o.background = bg
+					  vim.cmd("colorscheme everforest")
+					  print("Everforest background set to " .. bg)
+					end, {
+					  nargs = 1,
+					  complete = function()
+						return { "light", "dark" }
+					  end,
+					})
+
+					vim.api.nvim_create_user_command("EverforestContrast", function(opts)
+					  local contrast = opts.args
+					  if contrast ~= "hard" and contrast ~= "medium" and contrast ~= "soft" then
+						print("Invalid contrast: choose hard, medium, or soft")
+						return
+					  end
+					  vim.g.everforest_background = contrast
+					  vim.cmd("colorscheme everforest")
+					  print("Everforest contrast set to " .. contrast)
+					end, {
+					  nargs = 1,
+					  complete = function()
+						return { "hard", "medium", "soft" }
+					  end,
+					})
+				end
+			},
 		},
 		priority = 1000,
 		lazy = false,
