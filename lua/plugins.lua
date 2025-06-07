@@ -54,6 +54,32 @@ return {
 						return { "hard", "medium", "soft" }
 					  end,
 					})
+
+				    local available_presets = {
+						["1"] = [[
+							EverforestBackground dark
+							EverforestContrast medium
+							TransparentEnable
+						]],
+						["2"] = [[
+							EverforestBackground light
+							EverforestContrast soft
+							TransparentDisable
+						]],
+					}
+					vim.api.nvim_create_user_command("EverforestPreset", function(opts)
+					  local selected_preset = available_presets[opts.args]
+					  if not selected_preset then
+						print("Invalid preset")
+						return
+					  end
+					  vim.cmd(selected_preset)
+					end, {
+					  nargs = 1,
+					  complete = function()
+						return { "1", "2" }
+					  end,
+					})
 				end
 			},
 		},
