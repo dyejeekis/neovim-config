@@ -364,6 +364,19 @@ return {
 				},
 			}
 
+			-- Needed to resolve 'undefined global vim' warning
+			-- For some reason, doesn't work with the above servers table
+			vim.lsp.config('lua_ls', {
+				settings = {
+					Lua = {
+						diagnostics = {
+							globals = { 'vim' },
+							disable = { 'missing-fields' },
+						},
+					},
+				},
+			})
+
 			require('lspconfig').gdscript.setup {}
 		end,
 	},
