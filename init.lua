@@ -199,6 +199,16 @@ end, { desc = '[A]utosave [D]isable' })
 -- Diagnostics config
 vim.diagnostic.config({ virtual_text = true })
 
+-- Diagnostics next
+vim.keymap.set('n', '<leader>nn', function()
+	vim.diagnostic.goto_next()
+end, { silent = true, noremap = true })
+
+-- Diagnostics previous
+vim.keymap.set('n', '<leader>np', function()
+	vim.diagnostic.goto_prev()
+end, { silent = true, noremap = true })
+
 -- Toggle diagnostics
 vim.keymap.set('n', '<leader>nt', function()
 	vim.diagnostic.enable(not vim.diagnostic.is_enabled())
