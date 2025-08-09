@@ -726,5 +726,16 @@ return {
 			-- vim.keymap.set('n', '<leader>h', function() toggle_telescope(harpoon:list()) end,
 			-- 	{ desc = 'Open [H]arpoon window' })
 		end
-	}
+	},
+
+	{ -- Scrollbar
+		'petertriho/nvim-scrollbar',
+		config = function ()
+			require('scrollbar').setup({
+				handle = {
+					blend = 75, -- Opacity
+				}
+			})
+		end
+	},
 }
