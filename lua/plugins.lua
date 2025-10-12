@@ -515,7 +515,8 @@ return {
 
 		  require('mini.starter').setup {
 			header = vim.fn.getcwd(),
-		    autoopen = false,
+		    autoopen = true,
+			footer = "",
 		  }
 		  -- Simple and easy statusline.
 		  --  You could remove this setup call if you don't like it,
