@@ -1,3 +1,5 @@
+local DEFAULT_COLORSCHEME = 'terafox'
+
 return {
 	-- No config plugins
 	'tpope/vim-rhubarb',
@@ -87,7 +89,7 @@ return {
 		lazy = false,
 		config = function ()
 			-- Load the colorscheme here.
-			vim.cmd.colorscheme 'everforest'
+			vim.cmd.colorscheme(DEFAULT_COLORSCHEME)
 
 			-- You can configure highlights by doing something like:
 			-- vim.cmd.hi 'Comment gui=none'
