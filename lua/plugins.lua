@@ -1,4 +1,4 @@
-local DEFAULT_COLORSCHEME = 'terafox'
+local DEFAULT_COLORSCHEME = 'everforest'
 
 return {
 	-- No config plugins
